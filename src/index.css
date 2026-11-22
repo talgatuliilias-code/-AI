@@ -1,0 +1,102 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-display: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-sans: 'Manrope', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+    overflow-x: clip;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    overflow-x: clip;
+    overscroll-behavior-y: contain;
+    touch-action: manipulation;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-mono, .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Prevent iOS Safari zoom-in on form field tap (<16px triggers zoom) */
+@media (max-width: 767px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Google-Maps-like lively Leaflet markers and touch behavior */
+.leaflet-container {
+  font-family: var(--font-sans);
+  touch-action: pan-x pan-y;
+}
+
+.dermasense-map-marker > div {
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+}
+
+.dermasense-map-marker:hover > div {
+  transform: scale(1.16) translateY(-2px);
+}
+
+.dermasense-user-ring {
+  animation: ds-gps-pulse 2.2s ease-out infinite;
+}
+
+@keyframes ds-gps-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.48), 0 3px 10px rgba(15, 23, 42, 0.35);
+  }
+  70% {
+    box-shadow: 0 0 0 14px rgba(16, 185, 129, 0), 0 3px 10px rgba(15, 23, 42, 0.35);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0), 0 3px 10px rgba(15, 23, 42, 0.35);
+  }
+}
+
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Custom subtle scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.35);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.55);
+}

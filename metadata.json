@@ -1,0 +1,11 @@
+{
+  "name": "DermaSense AI",
+  "description": "Единая интеллектуальная медицинская платформа Казахстана: AI-анализ кожи, ИМТ, медицинский AI-чат, голосовой помощник, семейные профили и сервисы РК.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
